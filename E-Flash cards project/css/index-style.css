@@ -1,0 +1,80 @@
+html{
+    background-color: #121212;
+    color:#cccc00;
+}
+
+#top-nav{
+	background-color: #e6e600;
+	clear:both;
+}
+
+header a{
+    color:black;
+}
+
+#item-list a{
+    color: black;
+}
+
+#item-list a:hover{
+    color: rgb(107, 107, 107);
+}
+
+.navbar-brand h1{
+	margin: 0px;
+    width: fit-content;
+}
+
+.navbar-header button{
+	margin-top: 17px;
+}
+
+#nav-list {
+    padding: 7.5px;
+    color: black;
+    text-align: center;
+    font-size: 1.5em;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#item-list li{
+	text-align: center;
+    background-color: #cccc00;
+    margin: 5px;
+}
+
+@media (max-width: 768px) {
+    .img1 {
+        width: 150px;
+        height: 30px;
+        margin-left: -15px;
+    }
+}
+@media (min-width: 768px) {
+    #top-nav{
+		height: 4.3em;
+	}
+
+    .img1 {
+        height: 50px;
+        width: 300px;
+        margin-top: -15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .img1 {
+        height: 50px;
+        width: 300px;
+        margin-top: -15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .img1 {
+        height: 50px;
+        width: 300px;
+        margin-top: -15px;
+    }
+}
