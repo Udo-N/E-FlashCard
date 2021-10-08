@@ -38,11 +38,11 @@ header a{
     margin: 0 auto;
 }
 
-#item-list li{
+/* #item-list li{
 	text-align: center;
     background-color: #cccc00;
     margin: 5px;
-}
+} */
 
 .login {
     position: absolute;
@@ -76,6 +76,33 @@ header a{
 }
 
 .signup a:hover{
+    color: #e6e600;
+    text-decoration: none;
+}
+
+#phone-login a{
+    font-weight: bold;
+}
+
+#phone-signup a{
+    font-weight: bold;
+}
+
+#phone-login:hover{
+    background-color: #121212;
+}
+
+#phone-login a:hover{
+    color: #e6e600;
+    text-decoration: none;
+}
+
+
+#phone-signup:hover{
+    background-color: #121212;
+}
+
+#phone-signup a:hover{
     color: #e6e600;
     text-decoration: none;
 }
