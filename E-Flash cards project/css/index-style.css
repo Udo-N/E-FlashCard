@@ -33,51 +33,41 @@ header a{
     margin: 0 auto;
 }
 
-/* #item-list li{
-	text-align: center;
-    background-color: #cccc00;
-    margin: 5px;
-} */
+.login-signup{
+    margin-top: 8px;
+    float: right;
+}
 
 .login {
-    position: absolute;
-    left: 82%;
-    top: 10px;
+    float: left;
     font-weight: bold;
     font-size: 1.5em;
+    margin-right: 10px;
     padding: 5px;
-    border: 3px solid #121212;
+    border: 2px solid #121212;
     border-radius: 5px;
 }
 
 .login:hover{
     background-color: #121212;
-    border-radius: 5px;
-}
-
-.login a:hover{
     color: #e6e600;
+    border-radius: 5px;
     text-decoration: none;
 }
 
 .signup {
-    position: absolute;
-    left: 90%;
-    top: 10px;
+    float: right;
     font-weight: bold;
     font-size: 1.5em;
     padding: 5px;
-    border: 3px solid #121212;
+    border: 2px solid #121212;
     border-radius: 5px;
 }
 
 .signup:hover{
     background-color: #121212;
-    border-radius: 5px;
-}
-
-.signup a:hover{
     color: #e6e600;
+    border-radius: 5px;
     text-decoration: none;
 }
 
@@ -330,12 +320,10 @@ header a{
     }
 
     .login{
-        left: 75%;
         display: inherit;
     }
 
     .signup{
-        left: 85%;
         display: inherit;
     }
 
@@ -379,14 +367,6 @@ header a{
         margin-top: -15px;
     }
 
-    .login{
-        left: 80%;
-    }
-
-    .signup{
-        left: 90%;
-    }
-
     #box{
         margin-top: 80px;
     }
@@ -423,14 +403,6 @@ header a{
         height: 50px;
         width: 300px;
         margin-top: -15px;
-    }
-
-    .login{
-        left: 80%;
-    }
-
-    .signup{
-        left: 90%;
     }
 
     .edit-button{
