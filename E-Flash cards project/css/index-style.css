@@ -131,7 +131,6 @@ header a{
     border-radius: 5px;
     padding: 2px;
     font-weight: bold;
-    margin-top: 30px;
 }
 
 .edit-button:hover{
@@ -154,12 +153,43 @@ header a{
     color: #121212;
 }
 
-.row{
-    overflow: auto;
+.left-arrow{
+    position: absolute;
+    background-color: #121212;
+    color: #e6e600;
+    border: 3px solid #e6e600;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
-@media (max-width: 768px){
+.left-arrow:hover{
+    background-color: #e6e600;
+    color: #121212;
+}
+
+.right-arrow{
+    position: absolute;
+    background-color: #121212;
+    color: #e6e600;
+    border: 3px solid #e6e600;
+    border-radius: 5px;
+    height: 50px;
+    width: 50px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.right-arrow:hover{
+    background-color: #e6e600;
+    color: #121212;
+}
+
+@media (max-width: 204px){
     .edit-button{
+        margin-top: 100px;
         margin-left: 29.166666667%;
         margin-right: 29.166666667%;
     }
@@ -169,6 +199,64 @@ header a{
         margin-left: 29.166666667%;
         margin-right: 29.166666667%;
     } 
+
+    .left-arrow{        
+        top: 400px;
+        left: 5%;
+    }
+
+    .right-arrow{
+        top: 400px;
+        right: 5%;
+    }
+}
+
+@media (min-width: 204px){
+    .edit-button{
+        margin-top: 100px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    }
+
+    .save-button{
+        margin-top: 15px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    } 
+
+    .left-arrow{        
+        top: 350px;
+        left: 5%;
+    }
+
+    .right-arrow{
+        top: 350px;
+        right: 5%;
+    }
+}
+
+@media (min-width: 225px){
+    .edit-button{
+        margin-top: 100px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    }
+
+    .save-button{
+        margin-top: 15px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    } 
+
+    .left-arrow{        
+        top: 350px;
+        left: 25%;
+    }
+
+    .right-arrow{
+        top: 350px;
+        right: 25%;
+    }
 }
 
 @media (max-width: 550px) {
@@ -216,6 +304,28 @@ header a{
     #box{
         margin-top: 80px;
     }
+
+    .edit-button{
+        margin-top: 100px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    }
+
+    .save-button{
+        margin-top: 15px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    }
+    
+    .left-arrow{        
+        top: 590px;
+        left: 35%;
+    }
+
+    .right-arrow{
+        top: 590px;
+        right: 35%;
+    }
     
 }
 
@@ -245,6 +355,7 @@ header a{
     }
 
     .edit-button{
+        margin-top: 30px;
         margin-left: 37.5%;
         margin-right: 37.5%;
     }
@@ -253,7 +364,17 @@ header a{
         margin-top: 15px;
         margin-left: 37.5%;
         margin-right: 37.5%;
-    }    
+    } 
+
+    .left-arrow{        
+        top: 330px;
+        left: 8%;
+    }
+
+    .right-arrow{
+        top: 330px;
+        right: 8%;
+    }   
 }
 
 @media (min-width: 992px) {
@@ -276,6 +397,7 @@ header a{
     }
     
     .edit-button{
+        margin-top: 30px;
         margin-left: 40vw;
         margin-right: 0;
     }
@@ -285,6 +407,16 @@ header a{
         margin-top: 30px;
         margin-left: 0;
         margin-right: 40vw;
+    }
+
+    .left-arrow{        
+        top: 330px;
+        left: 15%;
+    }
+
+    .right-arrow{
+        top: 330px;
+        right: 15%;
     }
 }
 
@@ -305,6 +437,7 @@ header a{
     }
 
     .edit-button{
+        margin-top: 30px;
         margin-left: 40vw;
         margin-right: 0;
     }
@@ -314,5 +447,15 @@ header a{
         margin-top: 30px;
         margin-right: 40vw;
         margin-left: 0;
+    }
+
+    .left-arrow{        
+        top: 330px;
+        left: 22%;
+    }
+
+    .right-arrow{
+        top: 330px;
+        right: 22%;
     }
 }
