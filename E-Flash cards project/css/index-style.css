@@ -46,10 +46,13 @@ header a{
     font-weight: bold;
     font-size: 1.5em;
     padding: 5px;
+    border: 3px solid #121212;
+    border-radius: 5px;
 }
 
 .login:hover{
     background-color: #121212;
+    border-radius: 5px;
 }
 
 .login a:hover{
@@ -64,10 +67,13 @@ header a{
     font-weight: bold;
     font-size: 1.5em;
     padding: 5px;
+    border: 3px solid #121212;
+    border-radius: 5px;
 }
 
 .signup:hover{
     background-color: #121212;
+    border-radius: 5px;
 }
 
 .signup a:hover{
@@ -116,6 +122,53 @@ header a{
 
 .container-fluid{
     background-color: #121212;
+}
+
+.edit-button{
+    background-color: #121212;
+    color: #e6e600;
+    border: 3px solid #e6e600;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.edit-button:hover{
+    background-color: #e6e600;
+    color: #121212;
+}
+
+.save-button{
+    position: relative;
+    background-color: #121212;
+    color: #e6e600;
+    border: 3px solid #e6e600;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.save-button:hover{
+    background-color: #e6e600;
+    color: #121212;
+}
+
+.row{
+    overflow: auto;
+}
+
+@media (max-width: 768px){
+    .edit-button{
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    }
+
+    .save-button{
+        margin-top: 15px;
+        margin-left: 29.166666667%;
+        margin-right: 29.166666667%;
+    } 
 }
 
 @media (max-width: 550px) {
@@ -190,7 +243,17 @@ header a{
     #box{
         margin-top: 80px;
     }
-    
+
+    .edit-button{
+        margin-left: 37.5%;
+        margin-right: 37.5%;
+    }
+
+    .save-button{
+        margin-top: 15px;
+        margin-left: 37.5%;
+        margin-right: 37.5%;
+    }    
 }
 
 @media (min-width: 992px) {
@@ -210,7 +273,19 @@ header a{
 
     #box{
         margin-top: 80px;
-    }    
+    }
+    
+    .edit-button{
+        margin-left: 40vw;
+        margin-right: 0;
+    }
+
+    .save-button{
+        float: right;
+        margin-top: 30px;
+        margin-left: 0;
+        margin-right: 40vw;
+    }
 }
 
 
@@ -227,5 +302,17 @@ header a{
 
     .signup{
         left: 90%;
+    }
+
+    .edit-button{
+        margin-left: 40vw;
+        margin-right: 0;
+    }
+
+    .save-button{
+        float: right;
+        margin-top: 30px;
+        margin-right: 40vw;
+        margin-left: 0;
     }
 }
