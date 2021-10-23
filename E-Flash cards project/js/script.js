@@ -7,11 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
     edit_button.addEventListener("click", () => {
         front_text.contentEditable = true;
         back_text.contentEditable = true;
+        front_text.style.backgroundColor = "#e6e600";
+        front_text.style.color = "#121212";
+        back_text.style.backgroundColor = "#e6e600";
+        back_text.style.color = "#121212";
     });
 
     save_button.addEventListener("click", () => {
         front_text.contentEditable = false;
         back_text.contentEditable = false;
+        front_text.style.backgroundColor = "#121212";
+        front_text.style.color = "#e6e600";
+        back_text.style.backgroundColor = "#121212";;
+        back_text.style.color = "#e6e600";
     });
 
     front_text.addEventListener("click", () => {
