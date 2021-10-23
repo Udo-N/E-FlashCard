@@ -98,7 +98,7 @@ header a{
     text-decoration: none;
 }
 
-#box{
+#front, #back{
     position: relative;
 	background-color: #121212;
     color: #e6e600;
@@ -108,7 +108,6 @@ header a{
     height: auto; 
     min-height: 400px;
     margin: 0 auto;
-    margin-top: 150px;
 	padding: 30px;
     font-weight: bold;  
 	overflow: auto;
@@ -119,10 +118,14 @@ header a{
     align-items: center;
 }
 
-#box:hover{
+#back{
+    display: none;
+}
+
+/* #front:hover{
     background-color: #e6e600;
     color: #121212;
-}
+} */
 
 .container-fluid{
     background-color: #121212;
@@ -246,20 +249,25 @@ header a{
         display: none;
     }
 
-    #box{
-        /* display: block; */
+    #front, #back{
         width: 70vw;
         height: auto; 
         min-height:200px;
         padding-top: 20px;
         padding-bottom: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
         overflow: auto;
         margin-top: 50px;
         display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center; 
-    align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    #back{
+        display: none;
     }
 
     .edit-button{
@@ -298,7 +306,7 @@ header a{
         display: none;
     }
 
-    #box{
+    #front, #back{
         margin-top: 80px;
     }
 
@@ -346,7 +354,7 @@ header a{
         display: inherit;
     }
 
-    #box{
+    #front, #back{
         margin-top: 80px;
     }
 
@@ -386,7 +394,7 @@ header a{
         margin-top: -15px;
     }
 
-    #box{
+    #front, #back{
         margin-top: 80px;
     }
     
