@@ -16,7 +16,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <div class="navbar-brand">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img class= "img1" src="images/Logo.png"/>
                             </a>
                         </div>
@@ -32,11 +32,11 @@
                         <input type="text" id="username" name="username" placeholder="Username"><br>
                         <input type="password" id="password" name="password" placeholder="Password"><br>
                         <input type="password" id="password2" name="password" placeholder="Re-enter Password"><br>
-                        <input type="submit" value="Login">
+                        <input type="submit" value="Sign up">
                     </form>
 
                     <p>Already have an account? <br>
-                    <a href="login.html">Login</a> here</p>
+                    <a href="login.php">Login</a> here</p>
                 </div>
 
                 
