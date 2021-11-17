@@ -1,3 +1,37 @@
+<?php
+    $dsn = 'mysql:host=localhost; dbname=e-flash_card_schema';
+    $username = 'pma';
+    $password = 'W0lver1ne';
+
+    $db = new PDO($dsn, $username, $password);
+    
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $password2 = $_POST['password2'];
+
+    $query1 = "SELECT Username FROM `e-flash_card_schema`.`users` WHERE Username = '$username'";
+    $statement1 = $db->prepare($query1);
+    $statement1->execute();
+    $record_username = $statement1->fetch();
+    $statement1->closeCursor();
+
+    if (!$record_username){
+        if($password == $password2){
+            $query2 = "INSERT INTO `e-flash_card_schema`.`users` 
+                        VALUES ('$username', '$password')";
+            $statement2 = $db->prepare($query2);
+            $statement2->execute();
+            header("Location: http://localhost/E-FlashCard/E-Flash cards project/login.php"); 
+            exit();
+        }
+    }      
+?>
+
+<script>
+    var logtest = <?php echo json_encode($record_username); ?>;
+    console.log(logtest);
+</script>
+
 <!DOCTYPE html>
 
 <html lang="en" style="background-color: #121212; color:#cccc00;">
@@ -28,10 +62,10 @@
         <div class = "container-fluid">    
             <div class="row"> 
                 <div id = "box">
-                    <form>
+                    <form action="signup.php" method="post">
                         <input type="text" id="username" name="username" placeholder="Username"><br>
                         <input type="password" id="password" name="password" placeholder="Password"><br>
-                        <input type="password" id="password2" name="password" placeholder="Re-enter Password"><br>
+                        <input type="password" id="password2" name="password2" placeholder="Re-enter Password"><br>
                         <input type="submit" value="Sign up">
                     </form>
 
