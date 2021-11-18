@@ -122,11 +122,6 @@ header a{
     display: none;
 }
 
-/* #front:hover{
-    background-color: #e6e600;
-    color: #121212;
-} */
-
 .container-fluid{
     background-color: #121212;
 }
@@ -232,6 +227,19 @@ header a{
 .right-arrow-mobile:hover{
     background-color: #e6e600;
     color: #121212;
+}
+
+#signout-container{
+    display: flex;
+    margin-top: 100px;
+}
+
+.container-fluid a{
+    color: #e6e600;
+    margin: auto;
+    width: auto;
+    align-content: center;
+    font-weight: bold;
 }
 
 @media (max-width: 550px) {
