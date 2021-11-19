@@ -133,6 +133,13 @@
     const previous = document.querySelector(".left-arrow");
     var cardNumber = <?php echo json_encode($card_number); ?>;
     console.log(cardNumber)
+
+    if (cardNumber == 1){
+        previous.style.display = "none";
+    }
+    else if (cardNumber == 10){
+        next.style.display = "none";
+    }
     
     edit_button.addEventListener("click", () => {
         front_text.contentEditable = true;
@@ -192,7 +199,7 @@
 
     previous.addEventListener("click", () =>{
         console.log(cardNumber)
-
+        
         $.ajax({
             method: "POST",
             url: "php/card-decrease.php",
@@ -200,7 +207,8 @@
         }).success(function( msg ) {
             console.log(msg);
             location.href = "index.php"
-        });
+        }); 
+        
     });
 });
 </script>
