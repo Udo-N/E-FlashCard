@@ -22,8 +22,8 @@
             $statement2 = $db->prepare($query2);
             $statement2->execute();
 
-            $query3 = "INSERT INTO `e-flash_card_schema`.`card_text` (Username)
-                        VALUES ('$username') ";
+            $query3 = "INSERT INTO `e-flash_card_schema`.`card_text` (Username, Card_Number)
+                        VALUES ('$username', 1), ('$username', 2) ";
             $statement3 = $db->prepare($query3);
             $statement3->execute();
             header("Location: http://localhost/E-FlashCard/E-Flash cards project/login.html"); 

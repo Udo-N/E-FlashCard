@@ -24,6 +24,7 @@
         if ($password == $record_password['Password']){
             session_start();
             $_SESSION['Username'] = $username;
+            $_SESSION['Card_number'] = 1;
             header("Location: http://localhost/E-FlashCard/E-Flash cards project/index.php"); 
             exit();
         }

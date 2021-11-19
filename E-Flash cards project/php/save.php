@@ -11,14 +11,15 @@
 
     $front_text = $_POST['front_display'];
     $back_text = $_POST['back_display'];
-    // $card_number = 1
-    // $updated_card_number = $card_number + 1;
+    $card_number = $_POST['card_number'];
+
 
     $query = "UPDATE `e-flash_card_schema`.`card_text`
                 SET Front_text = '$front_text',
-                    Back_Text = '$back_text', 
-                    Card_Number = 1
-                WHERE Username = '$user'";
+                    Back_Text = '$back_text' 
+                WHERE Username = '$user' AND Card_Number = '$card_number'";
     $statement = $db->prepare($query);
     $statement->execute();
 ?>
+
+

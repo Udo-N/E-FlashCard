@@ -7,7 +7,7 @@
 
     session_start();
     $user = $_SESSION['Username'];
-    $card_number = 1;
+    $card_number = $_SESSION['Card_number'];
 
     $query1 = "SELECT Front_Text FROM `e-flash_card_schema`.`card_text` WHERE Username = '$user' AND Card_Number = '$card_number'";
     $statement1 = $db->prepare($query1);
@@ -108,12 +108,21 @@
     var frontText = <?php echo json_encode($front_text); ?>;
     var backText = <?php echo json_encode($back_text); ?>;
 
-    console.log(frontText.Front_Text);
+    console.log(frontText);
 
-    front_display.innerHTML = frontText.Front_Text;
-    back_display.innerHTML = backText.Back_Text;
+    if(!frontText || frontText.Front_Text == null){
+        front_display.innerHTML = "Click Edit to add text to the front of the flashcard"
+    }
+    else{
+        front_display.innerHTML = frontText.Front_Text;
+    }
 
-    //TODO: if frontTEXT and backText are empty, display default text values
+    if(!backText || backText.Back_Text == null){
+        back_display.innerHTML = "Click Edit to add text to the back of the flashcard"
+    }
+    else{
+        back_display.innerHTML = backText.Back_Text;
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
     const edit_button = document.querySelector(".edit-button");
@@ -122,6 +131,8 @@
     const back_text = document.getElementById("back");
     const next = document.querySelector(".right-arrow");
     const previous = document.querySelector(".left-arrow");
+    var cardNumber = <?php echo json_encode($card_number); ?>;
+    console.log(cardNumber)
     
     edit_button.addEventListener("click", () => {
         front_text.contentEditable = true;
@@ -145,7 +156,8 @@
             url: "./php/save.php",
             data: { 
                 front_display: front_text.innerHTML,
-                back_display: back_text.innerHTML}
+                back_display: back_text.innerHTML,
+                card_number: cardNumber}
         }).success(function( msg ) {
             console.log(msg);
         });
@@ -166,13 +178,29 @@
     });
 
     next.addEventListener("click", () =>{
-        cardNumber = <?php echo json_encode($card_number); ?>;
-        cardNumber++;
         console.log(cardNumber)
+
+        $.ajax({
+            method: "POST",
+            url: "php/card-increase.php",
+            data: { card_number: cardNumber}
+        }).success(function( msg ) {
+            console.log(msg);
+            location.href = "index.php"
+        });
     });
 
     previous.addEventListener("click", () =>{
+        console.log(cardNumber)
 
+        $.ajax({
+            method: "POST",
+            url: "php/card-decrease.php",
+            data: { card_number: cardNumber}
+        }).success(function( msg ) {
+            console.log(msg);
+            location.href = "index.php"
+        });
     });
 });
 </script>
