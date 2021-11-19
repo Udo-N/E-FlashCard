@@ -242,6 +242,10 @@ header a{
     font-weight: bold;
 }
 
+.container-fluid a:hover{
+    text-decoration: none;
+}
+
 @media (max-width: 550px) {
     .img1 {
         width: 130px;

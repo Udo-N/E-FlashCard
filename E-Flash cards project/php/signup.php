@@ -1,7 +1,7 @@
 <?php
     $dsn = 'mysql:host=localhost; dbname=e-flash_card_schema';
     $username = 'pma';
-    $password = 'W0lver1ne';
+    $password = 'Passw0rd69.';
 
     $db = new PDO($dsn, $username, $password);
     
@@ -26,7 +26,7 @@
                         VALUES ('$username') ";
             $statement3 = $db->prepare($query3);
             $statement3->execute();
-            header("Location: http://localhost/E-FlashCard/E-Flash cards project/login.php"); 
+            header("Location: http://localhost/E-FlashCard/E-Flash cards project/login.html"); 
             exit();
         }
     }      
