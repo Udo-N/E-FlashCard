@@ -6,8 +6,8 @@
     $db = new PDO($dsn, $username, $password);
 
     session_start();
-    $user = $_SESSION['Username'];
-    $card_number = $_SESSION['Card_number'];
+    $user = @$_SESSION['Username'];
+    $card_number = @$_SESSION['Card_number'];
 
     $query1 = "SELECT Front_Text FROM `e-flash_card_schema`.`card_text` WHERE Username = '$user' AND Card_Number = '$card_number'";
     $statement1 = $db->prepare($query1);
@@ -21,6 +21,7 @@
     $back_text = $statement2->fetch();
     $statement2->closeCursor();
 
+    error_reporting(0);
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +56,7 @@
                         </button>
                     </div>
                     
-                    <div class="login-signup">
+                    <div id="right-header">
                         <a class="login" href="login.html">Log in</a>
                         <a class="signup" href="signup.html">Sign up</a>
                     </div>
@@ -92,7 +93,6 @@
 
                 <button type="button" class="edit-button col-lg-1 col-md-1 col-sm-3 col-xs-5">EDIT</button>
                 <button type="button" id="save-button" class="save-button col-lg-1 col-md-1 col-sm-3 col-xs-5">SAVE</button>
-                <div id = "signout-container"><a id= "signout">Sign Out</a></div>
             </div>            
         </div>
         
@@ -105,10 +105,30 @@
 <script>
     const front_display = document.getElementById("front");
     const back_display = document.getElementById("back");
+    const edit_button = document.querySelector(".edit-button");
+    const save_button = document.querySelector(".save-button");
+    const front_text = document.getElementById("front");
+    const back_text = document.getElementById("back");
+    const next = document.querySelector(".right-arrow");
+    const previous = document.querySelector(".left-arrow");
+    const nextMobile = document.querySelector(".right-arrow-mobile");
+    const previousMobile = document.querySelector(".left-arrow-mobile");
+    var cardNumber = <?php echo json_encode($card_number); ?>;
     var frontText = <?php echo json_encode($front_text); ?>;
     var backText = <?php echo json_encode($back_text); ?>;
+    var currentUser = <?php echo json_encode($user); ?>;
+    console.log(cardNumber)
 
-    console.log(frontText);
+    console.log(currentUser);
+
+    if(currentUser != null){
+        document.getElementById("right-header").innerHTML = "<div id='current-user'>Logged in as " + currentUser + "</div>";
+        document.getElementById("right-header").innerHTML += "<button id= 'signout'>Sign Out</button>";
+
+        document.getElementById("nav-list").innerHTML = "<li>Logged in as " + currentUser + "</li>";
+        document.getElementById("nav-list").innerHTML += "<li id='phone-signout'><button>Sign Out</button></li>";
+
+    }
 
     if(!frontText || frontText.Front_Text == null){
         front_display.innerHTML = "Click Edit to add text to the front of the flashcard"
@@ -124,91 +144,133 @@
         back_display.innerHTML = backText.Back_Text;
     }
 
+    if (currentUser == null){
+        front_display.innerHTML = "Please Log in or Sign up to save flashcards"
+        back_display.innerHTML = "Please Log in or Sign up to save flashcards"
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-    const edit_button = document.querySelector(".edit-button");
-    const save_button = document.querySelector(".save-button");
-    const front_text = document.getElementById("front");
-    const back_text = document.getElementById("back");
-    const next = document.querySelector(".right-arrow");
-    const previous = document.querySelector(".left-arrow");
-    var cardNumber = <?php echo json_encode($card_number); ?>;
-    console.log(cardNumber)
+        const signOut = document.getElementById("signout");
+        const phoneSignOut = document.getElementById("phone-signout");
 
-    if (cardNumber == 1){
-        previous.style.display = "none";
-    }
-    else if (cardNumber == 10){
-        next.style.display = "none";
-    }
-    
-    edit_button.addEventListener("click", () => {
-        front_text.contentEditable = true;
-        back_text.contentEditable = true;
-        front_text.style.backgroundColor = "#e6e600";
-        front_text.style.color = "#121212";
-        back_text.style.backgroundColor = "#e6e600";
-        back_text.style.color = "#121212";
-    });
-
-    save_button.addEventListener("click", () => {
-        front_text.contentEditable = false;
-        back_text.contentEditable = false;
-        front_text.style.backgroundColor = "#121212";
-        front_text.style.color = "#e6e600";
-        back_text.style.backgroundColor = "#121212";
-        back_text.style.color = "#e6e600";
-
-        $.ajax({
-            method: "POST",
-            url: "./php/save.php",
-            data: { 
-                front_display: front_text.innerHTML,
-                back_display: back_text.innerHTML,
-                card_number: cardNumber}
-        }).success(function( msg ) {
-            console.log(msg);
+        if (cardNumber == 1){
+            previous.style.display = "none";
+        }
+        else if (cardNumber == 10){
+            next.style.display = "none";
+        }
+        
+        edit_button.addEventListener("click", () => {
+            front_text.contentEditable = true;
+            back_text.contentEditable = true;
+            front_text.style.backgroundColor = "#e6e600";
+            front_text.style.color = "#121212";
+            back_text.style.backgroundColor = "#e6e600";
+            back_text.style.color = "#121212";
         });
-    });
 
-    front_text.addEventListener("click", () => {
-        if (!front_text.isContentEditable){
-            front_text.style.display = "none";
-            back_text.style.display = "flex";
+        save_button.addEventListener("click", () => {
+            front_text.contentEditable = false;
+            back_text.contentEditable = false;
+            front_text.style.backgroundColor = "#121212";
+            front_text.style.color = "#e6e600";
+            back_text.style.backgroundColor = "#121212";
+            back_text.style.color = "#e6e600";
+
+            if(currentUser != null){
+                $.ajax({
+                method: "POST",
+                url: "./php/save.php",
+                data: { 
+                    front_display: front_text.innerHTML,
+                    back_display: back_text.innerHTML,
+                    card_number: cardNumber}
+                }).success(function( msg ) {
+                console.log(msg);
+                });
+            }
+            else{
+                location.href = ("signup.html")
+            }
+            
+        });
+
+        front_text.addEventListener("click", () => {
+            if (!front_text.isContentEditable){
+                front_text.style.display = "none";
+                back_text.style.display = "flex";
+            }
+        });
+
+        back_text.addEventListener("click", () => {
+            if (!back_text.isContentEditable){
+                front_text.style.display = "flex";
+                back_text.style.display = "none";
+            }
+        });
+
+        next.addEventListener("click", () =>{
+            console.log(cardNumber)
+
+            $.ajax({
+                method: "POST",
+                url: "php/card-increase.php",
+                data: { card_number: cardNumber}
+            }).success(function( msg ) {
+                console.log(msg);
+                location.href = "index.php"
+            });
+        });
+
+        previous.addEventListener("click", () =>{
+            console.log(cardNumber)
+            
+            $.ajax({
+                method: "POST",
+                url: "php/card-decrease.php",
+                data: { card_number: cardNumber}
+            }).success(function( msg ) {
+                console.log(msg);
+                location.href = "index.php"
+            }); 
+            
+        });
+
+        nextMobile.addEventListener("click", () =>{
+            console.log(cardNumber)
+
+            $.ajax({
+                method: "POST",
+                url: "php/card-increase.php",
+                data: { card_number: cardNumber}
+            }).success(function( msg ) {
+                console.log(msg);
+                location.href = "index.php"
+            });
+        });
+
+        previousMobile.addEventListener("click", () =>{
+            console.log(cardNumber)
+            
+            $.ajax({
+                method: "POST",
+                url: "php/card-decrease.php",
+                data: { card_number: cardNumber}
+            }).success(function( msg ) {
+                console.log(msg);
+                location.href = "index.php"
+            }); 
+            
+        });
+
+        if(currentUser != null){
+            signOut.addEventListener("click", () =>{
+                location.href = "php/end-session.php"
+            });
+
+            phoneSignOut.addEventListener("click", () =>{
+                location.href = "php/end-session.php"
+            });
         }
     });
-
-    back_text.addEventListener("click", () => {
-        if (!back_text.isContentEditable){
-            front_text.style.display = "flex";
-            back_text.style.display = "none";
-        }
-    });
-
-    next.addEventListener("click", () =>{
-        console.log(cardNumber)
-
-        $.ajax({
-            method: "POST",
-            url: "php/card-increase.php",
-            data: { card_number: cardNumber}
-        }).success(function( msg ) {
-            console.log(msg);
-            location.href = "index.php"
-        });
-    });
-
-    previous.addEventListener("click", () =>{
-        console.log(cardNumber)
-        
-        $.ajax({
-            method: "POST",
-            url: "php/card-decrease.php",
-            data: { card_number: cardNumber}
-        }).success(function( msg ) {
-            console.log(msg);
-            location.href = "index.php"
-        }); 
-        
-    });
-});
 </script>

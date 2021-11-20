@@ -33,9 +33,17 @@ header a{
     margin: 0 auto;
 }
 
-.login-signup{
+#right-header{
+    display: flex;
     margin-top: 8px;
     float: right;
+}
+
+#right-header div{
+    margin-top: 7px;
+    color: #121212;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 .login {
@@ -79,6 +87,15 @@ header a{
     font-weight: bold;
 }
 
+#phone-signout button{
+    font-weight: bold;
+    width: auto;
+    color: #121212;
+    background-color: #e6e600;
+    border: none;
+    outline: none;
+}
+
 #phone-login:hover{
     background-color: #121212;
 }
@@ -88,7 +105,6 @@ header a{
     text-decoration: none;
 }
 
-
 #phone-signup:hover{
     background-color: #121212;
 }
@@ -97,6 +113,13 @@ header a{
     color: #e6e600;
     text-decoration: none;
 }
+
+#phone-signout button:hover{
+    background-color: #121212;
+    color: #e6e600;
+}
+
+
 
 #front, #back{
     position: relative;
@@ -229,20 +252,24 @@ header a{
     color: #121212;
 }
 
-#signout-container{
-    display: flex;
-    margin-top: 100px;
-}
-
-.container-fluid a{
-    color: #e6e600;
+#signout{
+    display: inherit;
+    color: #121212;
+    background-color: #e6e600;
     margin: auto;
+    margin-left: 20px;
+    font-size: 1.5em;
     width: auto;
     align-content: center;
     font-weight: bold;
+    border: 2px solid #121212;
+    border-radius: 5px;
+    padding: 5px;
 }
 
-.container-fluid a:hover{
+#signout:hover{
+    background-color: #121212;
+    color: #e6e600;
     text-decoration: none;
 }
 
@@ -258,6 +285,14 @@ header a{
     }
 
     .signup{
+        display: none;
+    }
+
+    #signout{
+        display: none;
+    }
+
+    #right-header div{
         display: none;
     }
 
@@ -318,6 +353,14 @@ header a{
         display: none;
     }
 
+    #signout{
+        display: none;
+    }
+
+    #right-header div{
+        display: none;
+    }
+
     #front, #back{
         margin-top: 80px;
     }
@@ -363,6 +406,14 @@ header a{
     }
 
     .signup{
+        display: inherit;
+    }
+
+    #signout{
+        display: inherit;
+    }
+
+    #right-header div{
         display: inherit;
     }
 
