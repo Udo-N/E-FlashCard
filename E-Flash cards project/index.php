@@ -72,7 +72,7 @@
         </header>
 
         <div class = "container-fluid">    
-            <div class="row"> 
+            <div id = "main" class="row"> 
 
                 <button class="left-arrow">&#8249;</button>
 
@@ -170,27 +170,37 @@
         });
 
         save_button.addEventListener("click", () => {
-            front_text.contentEditable = false;
-            back_text.contentEditable = false;
-            front_text.style.backgroundColor = "#121212";
-            front_text.style.color = "#e6e600";
-            back_text.style.backgroundColor = "#121212";
-            back_text.style.color = "#e6e600";
-
-            if(currentUser != null){
-                $.ajax({
-                method: "POST",
-                url: "./php/save.php",
-                data: { 
-                    front_display: front_text.innerHTML,
-                    back_display: back_text.innerHTML,
-                    card_number: cardNumber}
-                }).success(function( msg ) {
-                console.log(msg);
-                });
+            
+            console.log(String(front_text.innerHTML).length);
+            
+            if(String(front_text.innerHTML).length > 200 || String(back_text.innerHTML).length > 200){
+                if(!document.getElementById("char-warning")){
+                    var charWarning = "<div id='char-warning'>Flashcard text must be 200 characters or less<div>";
+                    document.getElementById("main").insertAdjacentHTML("afterbegin", charWarning);
+                }
             }
             else{
-                location.href = ("signup.html")
+                front_text.contentEditable = false;
+                back_text.contentEditable = false;
+                front_text.style.backgroundColor = "#121212";
+                front_text.style.color = "#e6e600";
+                back_text.style.backgroundColor = "#121212";
+                back_text.style.color = "#e6e600";
+                if(currentUser != null){
+                    $.ajax({
+                    method: "POST",
+                    url: "./php/save.php",
+                    data: { 
+                        front_display: front_text.innerHTML,
+                        back_display: back_text.innerHTML,
+                        card_number: cardNumber}
+                    }).success(function( msg ) {
+                    console.log(msg);
+                    });
+                }
+                else{
+                    location.href = ("signup.html")
+                }
             }
             
         });

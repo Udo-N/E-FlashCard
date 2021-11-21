@@ -25,15 +25,15 @@
             session_start();
             $_SESSION['Username'] = $username;
             $_SESSION['Card_number'] = 1;
-            header("Location: http://localhost/E-FlashCard/E-Flash cards project/index.php"); 
+            header("Location: ../index.php"); 
             exit();
         }
+        else{
+            header("Location: ../invalid-password-login.html");
+        } 
+    }
+    else{
+        header("Location: ../invalid-user-login.html");
     }   
-    
-    
+      
 ?>
-
-<script>
-    var logtest = <?php echo json_encode($logtest); ?>;
-    console.log(logtest);
-</script>

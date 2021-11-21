@@ -26,14 +26,16 @@
                         VALUES ('$username', 1), ('$username', 2) ";
             $statement3 = $db->prepare($query3);
             $statement3->execute();
-            header("Location: http://localhost/E-FlashCard/E-Flash cards project/login.html"); 
+            header("Location: ../login.html"); 
             exit();
         }
+        else{
+            //TODO: Send back a value that makes signup.html display that passwords don't match
+            header("Location: ../pass-mismatch-signup.html");
+        }
+    }
+    else{
+        //TODO: Send back a value that makes signup.html display that username is taken
+        header("Location: ../user-taken-signup.html");
     }      
 ?>
-
-
-<script>
-    var logtest = <?php echo json_encode($record_username); ?>;
-    console.log(logtest);
-</script>

@@ -119,8 +119,6 @@ header a{
     color: #e6e600;
 }
 
-
-
 #front, #back{
     position: relative;
 	background-color: #121212;
@@ -135,7 +133,7 @@ header a{
     font-weight: bold;  
 	overflow: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center; 
     align-items: center;
@@ -273,6 +271,20 @@ header a{
     text-decoration: none;
 }
 
+#char-warning{
+    color:#e6e600;
+    margin: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 45px;
+    margin-bottom: -70px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+}
+
 @media (max-width: 550px) {
     .img1 {
         width: 130px;
@@ -311,6 +323,7 @@ header a{
         flex-wrap: wrap;
         justify-content: center; 
         align-items: center;
+    
     }
 
     #back{
