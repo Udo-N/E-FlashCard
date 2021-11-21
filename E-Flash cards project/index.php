@@ -131,14 +131,14 @@
     }
 
     if(!frontText || frontText.Front_Text == null){
-        front_display.innerHTML = "Click Edit to add text to the front of the flashcard"
+        front_display.innerHTML = "Click Edit to add text to the front of the flashcard. Click flashcard to flip over"
     }
     else{
         front_display.innerHTML = frontText.Front_Text;
     }
 
     if(!backText || backText.Back_Text == null){
-        back_display.innerHTML = "Click Edit to add text to the back of the flashcard"
+        back_display.innerHTML = "Click Edit to add text to the back of the flashcard. Click flashcard to flip over"
     }
     else{
         back_display.innerHTML = backText.Back_Text;
